@@ -7,7 +7,7 @@ require_relative 'consumers'
 
 puts '[TRANSITION_GENERATE] Starting...'
 
-class ContextGenerateTransition < Consumers::TransitionConsumer
+class TransitionGenerate < Consumers::TransitionConsumer
   def initialize
     super('generate')
   end
@@ -32,7 +32,7 @@ class ContextGenerateTransition < Consumers::TransitionConsumer
 end
 
 Daemons.run_proc('transition_generate', backtrace: true, dir: '.', log_output: true) do
-  ContextGenerateTransition.new.listen
+  TransitionGenerate.new.listen
 
   loop do
     sleep(10)

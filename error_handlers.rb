@@ -17,7 +17,7 @@ end
 
 class ErrorNotifierConsumer < Consumers::EventConsumer
   def initialize
-    super('error_notifier', 'error.*')
+    super('error_notifier', 'error.#')
   end
 
   def perform(delivery_info, metadata, payload)

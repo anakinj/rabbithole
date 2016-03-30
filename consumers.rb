@@ -44,11 +44,11 @@ module Consumers
     end
 
     def publish_error(payload)
-      publish(payload, "error.#{queue_name}")
+      publish(payload, "error.#{@queue_name}")
     end
 
     def publish_ready(payload)
-      publish(payload, "ready.#{queue_name}")
+      publish(payload, "ready.#{@queue_name}")
     end
 
     def publish(payload, routing_key)

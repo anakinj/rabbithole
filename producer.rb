@@ -10,7 +10,7 @@ channel  = conn.create_channel
 exchange = channel.topic('my.context', :durable => true)
 
 loop do
-  thing = { value: rand(0..10000) }
+  thing = { value: rand(0..10000), created_at: DateTime.now.to_s }
   puts "\n[PRODUCER] Creating #{thing.inspect} to process"
   exchange.publish(thing.to_json, :routing_key => 'created', :durable => true)
   puts '[PRODUCER] Sleeping for a while'
